@@ -1,0 +1,19 @@
+#navBar,
+#navBar div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navBar {
+    padding: 10px 100px;
+    height: 60px;
+}
+
+#navBar #logo{ 
+    gap: 4px;
+}
+
+#navBar #login {
+    gap: 8px
+}

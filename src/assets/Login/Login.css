@@ -1,0 +1,45 @@
+
+#loginImage {
+    width: 948px;
+    height: 1000px;
+}
+
+#loginPage {
+    justify-items: center;
+    align-items: center;
+    gap: 173px;
+
+
+}
+
+.input-wrapper {
+        width: 554px;
+
+}
+
+#loginPage h2 {
+    margin-bottom: 48px;
+    font-weight: 600;
+    font-size: 42px;
+}
+
+input {
+    margin-bottom: 24px;
+}
+
+#logInButton {
+    width: 100%;
+    background-color: rgba(255, 64, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.membership {
+    text-align: center;
+
+}
+.membership span {
+    color: rgba(255, 64, 0, 1);
+}
+
