@@ -5,6 +5,8 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { MdCameraAlt } from "react-icons/md";
 
+import { Link } from 'react-router-dom';
+
 
 import './Register.css'
 
@@ -65,12 +67,17 @@ const Register = () => {
 
                         </div>
                         {/* <label for="image-file">Upload Image</label> */}
-                        <input id='nameOrUsername' type="text" placeholder='Email or username' required />
+                        <input id='name' type="text" placeholder='Username' required />
+                        <input id='username' type='email' placeholder='Email' required />
 
                         <input id='password' type='password' placeholder='Password' required />
+                        <input id='confirm_password' type='password' placeholder='Password' required />
                         <span className='toggle-password' ></span>
 
-                        <input id='logInButton' type="button" value="Log in" />
+                        <input id='registerButton' type="button" value="Register" />
+
+                        <p className='membership'>Already a member? <Link to='/login'><span>Login</span></Link> </p>
+
 
                     </div>
                 </div>
