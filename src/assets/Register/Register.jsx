@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import registerImage from '../../image/62bc5492a876268b6b9fc395f006a9259cafde47.png'
 
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -10,8 +10,14 @@ import { Link } from 'react-router-dom';
 
 import './Register.css'
 
-const Register = () => {
 
+
+const Register = () => {
+    const [avatarPreview, setAvatarPreview] = useState(null)
+    // const changeAvatar = () => {
+    //     setAvatarPreview(URL.createObjectURL(customerAvatar[0]))
+    //     console.log(avatarPreview)
+    // }
 
     const {
         watch,
@@ -36,6 +42,7 @@ const Register = () => {
         register("avatar")
     }
     const customerAvatar = watch("avatar")
+
 
     const registerUser = async (e) => {
         e.preventDefault(); // prevent default form submit
