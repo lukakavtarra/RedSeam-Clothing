@@ -1,11 +1,10 @@
 import React from 'react'
 import {QueryClient, useQuery } from "@tanstack/react-query";
 
-
 export const queryClient = new QueryClient();
 
 async function fetchJson() {
-  const res = await fetch("https://api.redseam.redberryinternship.ge/api/products", {
+  const res = await fetch("https://api.redseam.redberryinternship.ge/api/products?page=2", {
     method:'get',
     headers: new Headers ({
       'Accept': 'application/json',
@@ -21,11 +20,13 @@ export const CatalogList = () => {
   if(status === "success") {
     console.log(data.data)
     return(
-        <div>
+        <div className='flexBox' id='catalogDiv'>
             {data.data.map((post) => (
-                <div  key={post.id}>
+                <div className='products'  key={post.id}>
                 <img src={post.cover_image} alt="" />
-                <p>{post.name} {post.price}</p>
+                <p>{post.name}</p>
+                <p>$ {post.price}</p>
+                
                 </div>
             ))}
         </div>

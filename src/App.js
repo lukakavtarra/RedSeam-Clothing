@@ -11,6 +11,7 @@ import Catalog from "./assets/Catalog/Catalog";
 import NavBar from './assets/NavBar/NavBar';
 
 import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import Register from './assets/Register/Register';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Catalog />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>
         </Routes>
         </BrowserRouter>
 

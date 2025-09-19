@@ -1,6 +1,7 @@
 import React from 'react'
 import { CatalogList } from '../Queries/Queries'
 
+import './Catalog.css'
 const Catalog = () => {
   return (
     <div>

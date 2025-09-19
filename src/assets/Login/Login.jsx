@@ -7,6 +7,8 @@ import eye from '../../image/eye.png'
 import NavBar from '../NavBar/NavBar'
 import { isVisible } from '@testing-library/user-event/dist/utils'
 
+import { Link } from 'react-router-dom'
+
 
 async function LogToAcc() {
 
@@ -33,7 +35,6 @@ async function LogToAcc() {
             console.error(err.errors)
     }
 
-    //   return res.json();
 }
 
 const Login = () => {
@@ -60,7 +61,7 @@ const Login = () => {
 
                         <input onClick={LogToAcc} id='logInButton' type="button" value="Log in" />
 
-                        <p className='membership'>Not a member? <span>Register</span></p>
+                        <p className='membership'>Not a member? <Link to='/register'><span>Register</span></Link> </p>
                     </div>
                 </div>
             </div>
