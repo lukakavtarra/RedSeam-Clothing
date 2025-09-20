@@ -3,8 +3,10 @@ import {QueryClient, useQuery } from "@tanstack/react-query";
 
 export const queryClient = new QueryClient();
 
-async function fetchJson() {
-  const res = await fetch("https://api.redseam.redberryinternship.ge/api/products?page=2", {
+
+
+async function fetchJson(productPage) {
+  const res = await fetch(`https://api.redseam.redberryinternship.ge/api/products?page=${productPage}`, {
     method:'get',
     headers: new Headers ({
       'Accept': 'application/json',
@@ -12,13 +14,12 @@ async function fetchJson() {
   })
   return res.json();
 }
-export const CatalogList = () => {
+export const CatalogList = ({page}) => {
   const { data, status } = useQuery({
-    queryKey: ["items"],
-    queryFn: fetchJson,
+    queryKey: ["items",page],
+    queryFn: (e) => fetchJson(page),
   });
   if(status === "success") {
-    console.log(data.data)
     return(
         <div className='flexBox' id='catalogDiv'>
             {data.data.map((post) => (
