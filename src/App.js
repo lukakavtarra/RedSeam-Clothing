@@ -3,14 +3,14 @@ import './App.css'
 import { QueryClientProvider } from "@tanstack/react-query";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { CatalogList, TestQuery, queryClient } from "./assets/Queries/Queries";
+import { queryClient } from "./assets/Queries/Queries";
 
 
 import Login from "./assets/Login/Login";
 import Catalog from "./assets/Catalog/Catalog";
 import NavBar from './assets/NavBar/NavBar';
 
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Register from './assets/Register/Register';
 
 

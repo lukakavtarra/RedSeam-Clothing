@@ -4,17 +4,17 @@ import './Login.css'
 import loginImage from '../../image/62bc5492a876268b6b9fc395f006a9259cafde47.png'
 import eye from '../../image/eye.png'
 
-import NavBar from '../NavBar/NavBar'
-import { isVisible } from '@testing-library/user-event/dist/utils'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 async function LogToAcc() {
 
+
     const name = document.getElementById('nameOrUsername');
     const pass = document.getElementById('password');
 
+    const navigate = useNavigate();
 
     try {
         const response = await fetch("https://api.redseam.redberryinternship.ge/api/login", {
@@ -28,11 +28,16 @@ async function LogToAcc() {
                 "password": pass.value
             })
         });
-        
-            const isAccOk = await response.json();
-            if(isAccOk.token) localStorage.setItem('token', isAccOk.token)
+
+        const isAccOk = await response.json();
+        if (isAccOk.token) {
+            localStorage.setItem('token', isAccOk.token)
+            navigate("/")
+        }
+
+        console.log(isAccOk.token)
     } catch (err) {
-            console.error(err.errors)
+        console.error(err.errors)
     }
 
 }
