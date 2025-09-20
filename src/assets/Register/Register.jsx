@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import registerImage from '../../image/62bc5492a876268b6b9fc395f006a9259cafde47.png'
 
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import { MdCameraAlt } from "react-icons/md";
 
@@ -22,11 +22,8 @@ const Register = () => {
     const {
         watch,
         register,
-        unregister,
-        handleInput
     } = useForm({
         defaultValues: {
-            avatar: "",
             email: "",
             username: "",
             password: "",
@@ -35,13 +32,15 @@ const Register = () => {
     });
 
     const UnregisterAvatar = () => {
-        unregister("avatar")
+        setAvatarPreview(null)
     }
 
-    const RegisterAvatar = () => {
-        register("avatar")
+    const RegisterAvatar = (e) => {
+        const image = e.target.files[0]
+        if(!image) return;
+
+        setAvatarPreview(image)
     }
-    const customerAvatar = watch("avatar")
 
 
     const registerUser = async (e) => {
@@ -49,8 +48,8 @@ const Register = () => {
 
         const formData = new FormData();
 
-        if (customerAvatar && customerAvatar[0]) {
-            formData.append("avatar", customerAvatar[0]);
+        if (avatarPreview) {
+            formData.append("avatar", avatarPreview);
         }
         formData.append("email", watch("email"));
         formData.append("username", watch("username"));
@@ -83,13 +82,13 @@ const Register = () => {
                         <h2>Registration</h2>
                         <div id='' className="input-wrapper">
                             <div id='avatar_input'>
-                                {customerAvatar ? (
+                                {avatarPreview ? (
                                     <div id='uploaded'>
                                         <label htmlFor='image-file'>
                                             <div className="circle">
-                                                {customerAvatar[0] ? (
-                                                    <img id='avatar_image' src={URL.createObjectURL(customerAvatar[0])} alt="avatar" />
-                                                ) : console.log(customerAvatar[0])}
+                                                {avatarPreview ? (
+                                                    <img id='avatar_image' src={URL.createObjectURL(avatarPreview)} alt="avatar" />
+                                                ) : console.log(avatarPreview)}
                                             </div>
                                             <span>Upload new</span>
                                         </label>
@@ -101,7 +100,7 @@ const Register = () => {
                                             < MdCameraAlt id='avatar_icon' />
                                         </div> Upload Image</label>
                                 }
-                                <input className='no_display' type="file" id="image-file" accept="image/jpeg" {...register("avatar")} />
+                                <input className='no_display' type="file" id="image-file" accept="image/jpeg" onChange={RegisterAvatar}  />
 
                             </div>
                             {/* <label for="image-file">Upload Image</label> */}
